@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -24,5 +26,12 @@ public class BookController {
         book.add(new Book("Dan Brown","Origin"));
         book.add(new Book("Dan Brown","Origin"));
         return book;
+    }
+
+    @RequestMapping(method= RequestMethod.POST,value ="/save")
+    public String saveBook(@RequestBody Book b){
+
+        return "Your "+b.getBookName()+"book   saved"  ;
+
     }
 }
